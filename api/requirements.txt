@@ -6,3 +6,5 @@ mysqlclient
 alembic
 pytest
 httpx
+
+python-multipart

@@ -9,7 +9,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - '8005:8005'
-    image: fastapi-template:v1.0
+    image: auth-server-fastapi:v1.0
     container_name: fastapi
     volumes:
       - ./api/src:/app
