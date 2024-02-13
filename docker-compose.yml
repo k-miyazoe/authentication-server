@@ -15,5 +15,24 @@ services:
       - ./api/src:/app
     env_file:
       - ./api/dev.env
+  db:
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    image: auth-server-db:v1.0
+    container_name: auth-server-db
+    platform: linux/x86_64
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 1s
+      retries: 10
+      start_period: 3s
+      timeout: 20s
+    volumes:
+      - ./mysql/db:/var/lib/mysql
+    expose:
+      - 3306
+    env_file:
+      - ./mysql/db.env
 
 
